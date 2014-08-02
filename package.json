@@ -1,0 +1,17 @@
+{
+  "name": "lebowskis",
+  "version": "0.0.0",
+  "description": "coinjoin",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bitcoin": "^2.1.2",
+    "es5class": "^2.3.1",
+    "minimist": "^0.2.0",
+    "q": "^1.0.1"
+  }
+}
