@@ -4,6 +4,20 @@ var argv = require('minimist')(process.argv.slice(2));
 var BitcoinRpc = require('./rpc').Class;
 var Q = require('q');
 
+var cmdLineErrors = [];
+
+["address", "port", "user", "password"].forEach(function assertOption(optionName) {
+  if (!argv[optionName]) {
+    cmdLineErrors.push('Missing --' + optionName + "= command line option");
+  }
+});
+
+if (cmdLineErrors.length) {
+  cmdLineErrors.forEach(function (error) {
+    console.log(error);
+  });
+  process.exit();
+}
 
 var bitcoinRpc = new BitcoinRpc({
   host: argv.host || argv.h || 'localhost',
@@ -49,7 +63,7 @@ createRawTransactions = function (unspent) {
   });
 
   var rawTransaction = [ transactions, {
-    address: '65fXUkpJeSzF1JkWN2EJXyhUWb3TZD6MiX', // arbitary address, for padding transaction to calculate size, will be stripped later
+    address: '65fXUkpJeSzF1JkWN2EJXyhUWb3TZD6MiX',
     amount: total
   }];
 
