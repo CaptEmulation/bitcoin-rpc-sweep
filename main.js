@@ -6,7 +6,7 @@ var Q = require('q');
 
 var cmdLineErrors = [];
 
-["address", "port", "user", "password"].forEach(function assertOption(optionName) {
+["address", "fee", "user", "password"].forEach(function assertOption(optionName) {
   if (!argv[optionName]) {
     cmdLineErrors.push('Missing --' + optionName + "= command line option");
   }
@@ -21,7 +21,7 @@ if (cmdLineErrors.length) {
 
 var bitcoinRpc = new BitcoinRpc({
   host: argv.host || argv.h || 'localhost',
-  port: agv.port || argv.p || 8332,
+  port: argv.port || argv.p || 8332,
   user: argv.user || argv.u || 'rpc',
   password: argv.password || argv.p || '',
   timeout: parseInt((argv.timeout || argv.t || '30s').replace("s", "000"))
@@ -63,7 +63,7 @@ createRawTransactions = function (unspent) {
   });
 
   var rawTransaction = [ transactions, {
-    address: '65fXUkpJeSzF1JkWN2EJXyhUWb3TZD6MiX',
+    address: argv.address,
     amount: total
   }];
 
