@@ -11,7 +11,7 @@
   "dependencies": {
     "bitcoin": "^2.1.2",
     "es5class": "^2.3.1",
-    "minimist": "^0.2.0",
+    "minimist": "^1.2.5",
     "q": "^1.0.1"
   }
 }
